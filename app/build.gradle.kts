@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -59,6 +61,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.palette.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -66,4 +69,46 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.dagger.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson) // Or your preferred converter (Gson, Moshi, etc.)
+    implementation(libs.okhttp) // OkHttp is the underlying HTTP client for Retrofit
+    implementation(libs.retrofit2.kotlinx.serialization.converter) // If using Kotlin Serialization with Retrofit
+
+    // Coil
+    implementation(libs.coil)
+    implementation(libs.coil.compose)
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+    //noinspection KaptUsageInsteadOfKsp
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx) // Kotlin extensions for Room
+    implementation(libs.androidx.room.paging)
+
+    // Kotlin Serialization
+    implementation(libs.kotlinx.serialization.json)
+
+    // Paging 3
+    implementation(libs.androidx.paging.runtime.ktx) // For Kotlin coroutines support
+    implementation(libs.androidx.paging.compose) // For Compose
+
+    // Data Store
+    implementation(libs.androidx.datastore.preferences)
+
+    // Timber
+    implementation(libs.timber)
+
+    // SplashScreen
+    implementation(libs.splashscreen)
+    implementation(libs.splashscreen)
+
+    // Logger
+    implementation(libs.logging.interceptor)
 }
